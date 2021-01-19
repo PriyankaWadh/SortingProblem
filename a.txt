@@ -1,4 +1,5 @@
 #! /bin/bash
+declare -A results
 read -p "Enter first number : " a
 read -p "Enter second number : " b
 read -p "Enter third number : " c
@@ -8,3 +9,5 @@ result3=$(( a%b+c ))
 echo "Result of a+b*c : " $result
 echo "Result of c+a/b : " $result2
 echo "Result of a%b+c : " $result3
+results=(["a+b*c"]=$result ["c+a/b"]=$result2 ["a%b+c"]=$result3)
+echo ${results[@]}
