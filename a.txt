@@ -32,3 +32,17 @@ echo "Array before sorting : " ${arrresult[@]}
             done
 done
 echo "Array after sorting in descending order: " ${arrresult[@]}
+ for (( i=0; i<3; i++ ))
+ do
+            for (( j=$(( i+1 )); j<3; j++ ))
+            do
+                if [ ${arrresult[i]} -gt ${arrresult[j]} ]
+                then
+
+                    a=${arrresult[i]}
+                    arrresult[$i]=${arrresult[j]}
+                    arrresult[$j]=$a
+                fi
+            done
+done
+echo "Array after sorting in ascending order: " ${arrresult[@]}
