@@ -1,5 +1,6 @@
 #! /bin/bash
 declare -A results
+declare -a arrresult
 read -p "Enter first number : " a
 read -p "Enter second number : " b
 read -p "Enter third number : " c
@@ -11,3 +12,10 @@ echo "Result of c+a/b : " $result2
 echo "Result of a%b+c : " $result3
 results=(["a+b*c"]=$result ["c+a/b"]=$result2 ["a%b+c"]=$result3)
 echo ${results[@]}
+i=0
+for key in ${!results[@]}
+do
+	arrresult[$i]=${results[$key]}
+	i=$(( i+1 ))
+done
+echo ${arrresult[@]}
