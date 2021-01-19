@@ -11,11 +11,24 @@ echo "Result of a+b*c : " $result
 echo "Result of c+a/b : " $result2
 echo "Result of a%b+c : " $result3
 results=(["a+b*c"]=$result ["c+a/b"]=$result2 ["a%b+c"]=$result3)
-echo ${results[@]}
 i=0
 for key in ${!results[@]}
 do
 	arrresult[$i]=${results[$key]}
 	i=$(( i+1 ))
 done
-echo ${arrresult[@]}
+echo "Array before sorting : " ${arrresult[@]}
+ for (( i=0; i<3; i++ ))
+ do
+            for (( j=$(( i+1 )); j<3; j++ ))
+            do
+                if [ ${arrresult[i]} -lt ${arrresult[j]} ]
+                then
+
+                    a=${arrresult[i]}
+                    arrresult[$i]=${arrresult[j]}
+                    arrresult[$j]=$a
+                fi
+            done
+done
+echo "Array after sorting in descending order: " ${arrresult[@]}
